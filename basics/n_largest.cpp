@@ -9,12 +9,12 @@ Find the `n` largest elements in an array
 
 using namespace std;
 
+// Initial implementation
 vector<int> getTwoLargest(vector<int> nums) {
-    if (nums.empty() || nums.size() == 1)
+    if (nums.size() <= 2)
         return nums;
 
-    int first = INT_MIN; 
-    int second = INT_MIN;
+    int first, second = INT_MIN;
 
     for (auto num : nums) {
         if (num > second) {
@@ -28,6 +28,9 @@ vector<int> getTwoLargest(vector<int> nums) {
     return vector<int> {first, second};
 }
 
+auto comparator = [](int a, int b) { return a > b; };
+
+// Generalize to N largest
 vector<int> getNLargest(vector<int> nums, int n) {
     vector<int> largest;
 
@@ -35,25 +38,27 @@ vector<int> getNLargest(vector<int> nums, int n) {
         if (largest.size() < n) {
             largest.push_back(num);
             if (largest.size() == n)
-                make_heap(largest.begin(), largest.end());
-        } else {
-            if (num > largest.back()) {
-                swap(largest.back(), num);
-                make_heap(largest.begin(), largest.end());
-            }
+                make_heap(largest.begin(), largest.end(), comparator);
+        } else if (num > largest.front()) {
+            pop_heap(largest.begin(), largest.end(), comparator);
+            largest.pop_back();
+            largest.push_back(num);
+            make_heap(largest.begin(), largest.end(), comparator);
         }
     }
 
-    sort(largest.begin(), largest.end());
     return largest;
 }
 
 int main() {
-    vector<int> nums {-1, 0, 1, 2};
+    vector<int> nums {9, 3, 2, 0, 1, -1, 10};
+    cout << "Unsorted elements: [ ";
+    for (auto num : nums) cout << num << " "; cout << "]\n";
 
-    for (auto num : getNLargest(nums, 3)) {
-        cout << num << endl;
-    }
+    int n = 4;
+    vector<int> largest = getNLargest(nums, n);
+    cout << "Largest n=" << n << " elements: [ ";
+    for (auto num : largest) cout << num << " "; cout << "]\n";
 
     return 0;
 }
