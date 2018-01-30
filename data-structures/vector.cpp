@@ -7,7 +7,7 @@ Random vector things
 
 using namespace std;
 
-#define print(name) cout << #name << ": " << (name) << endl;
+#define print(name) cout << #name << ": " << name << endl;
 
 ostream& operator <<(ostream &os, const vector<int> &v) {
     os << "[ "; for (auto i : v)  os << i << " "; os << "]";

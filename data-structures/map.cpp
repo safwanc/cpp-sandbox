@@ -7,7 +7,7 @@ Random map things
 
 using namespace std;
 
-#define print(name) cout << #name << ": " << (name) << endl;
+#define print(name) cout << #name << ": " << name << endl;
 
 ostream& operator <<(ostream &os, const map<int, char> &m) {
     os << "{" << "\n";
