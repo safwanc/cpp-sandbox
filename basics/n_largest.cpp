@@ -55,6 +55,11 @@ int main() {
     cout << "Unsorted elements: [ ";
     for (auto num : nums) cout << num << " "; cout << "]\n";
 
+    cout << "Largest n=" << 2 << " elements: [ ";
+    vector<int> largestTwo = getTwoLargest(nums);
+    for (auto num : largestTwo) cout << num << " "; cout << "]\n";
+
+
     int n = 4;
     vector<int> largest = getNLargest(nums, n);
     cout << "Largest n=" << n << " elements: [ ";
