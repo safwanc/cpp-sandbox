@@ -3,9 +3,9 @@ Find the `n` largest elements in an array
 */
 
 #include <iostream>
-#include <tuple>
 #include <vector>
 #include <limits>
+#include <algorithm>
 
 using namespace std;
 
