@@ -44,15 +44,12 @@ vector<int> getNLargest(vector<int> nums, int n) {
         }
     }
 
+    sort(largest.begin(), largest.end());
     return largest;
 }
 
 int main() {
-    vector<int> nums {9, 8, 10, -1};
-
-    for (auto num : getTwoLargest(nums)) {
-        cout << num << endl;
-    }
+    vector<int> nums {-1, 0, 1, 2};
 
     for (auto num : getNLargest(nums, 3)) {
         cout << num << endl;
