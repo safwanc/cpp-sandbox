@@ -11,7 +11,7 @@ using namespace std;
 
 int anagramIndex(string input, string arg) 
 {
-    if (arg.size() >= input.size())
+    if (arg.size() <= input.size())
     {
         int windowSize = arg.size();
         int low = 0, high = low + windowSize;
@@ -48,7 +48,7 @@ int anagramIndex(string input, string arg)
 
 int main() {
     auto test = "abcdefg";
-    auto arg = "gfeg";
+    auto arg = "gfe";
 
     auto index = anagramIndex(test, arg);
     assert(index == 4);
